@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown App</title>
+    <style>
+                 
+        
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+           background: no-repeat;
+            background-image: url('rocket.webp');
+           
+        }
+               #countdown {
+            font-size: 2em;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<header>
+<h1> Countdown for Rocket Lanching Day</h1>
+</header>
+    
+<h4>This is the time for lanching</h4>
+<p>03/01/2024(Wednesday) 9:30 PM - 08/08/2024(thuruday) 9:30 AM</p>
+<div id="countdown"></div>
+
+<script>
+    
+    const countdownDate = new Date("Aug 08, 2024 21:29:59").getTime();
+    const countdownInterval = setInterval(function () {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+        if (distance < 0) {
+            clearInterval(countdownInterval);
+            document.getElementById("countdown").innerHTML = "Given Time Is Over";
+        }
+    }, 1000);
+</script>
+
+</body>
+</html>
